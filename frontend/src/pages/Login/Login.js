@@ -47,7 +47,7 @@ const Login = () => {
       message: msg,
     }
 
-    const res = await axios.post('http://localhost:5000/sendEmail', data);
+    const res = await axios.post(`${process.env.HOST}/sendEmail`, data);
     alert("Check your email..");
     console.log(res);
   }

@@ -44,7 +44,7 @@ const Signup = () => {
         email,
         num
       }
-      const { data } = axios.post(`http://localhost:5000/register`, user);
+      const { data } = axios.post(`${process.env.HOST}/register`, user);
       console.log(data);
     }
   }

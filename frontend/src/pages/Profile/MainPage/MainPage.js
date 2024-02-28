@@ -21,7 +21,7 @@ const MainPage = ({ user }) => {
   const username = user?.email?.split('@')[0];
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/userpost?email=${user?.email}`)
+    fetch(`${process.env.HOST}/userpost?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setPosts(data);
@@ -47,7 +47,7 @@ const MainPage = ({ user }) => {
         setIsLoading(false)
 
         if (url) {
-          fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+          fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
             method: "PATCH",
             headers: {
               'content-type': 'application/json'
@@ -86,7 +86,7 @@ const MainPage = ({ user }) => {
         }
         setIsLoading(false)
         if (url) {
-          fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+          fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
             method: "PATCH",
             headers: {
               'content-type': 'application/json'

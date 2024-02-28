@@ -40,7 +40,7 @@ const Sidebar = ({ handleLogout, user }) => {
       }
       const jsondata = JSON.stringify(data);
       // console.log(jsondata);
-      fetch('http://localhost:5000/register', {
+      fetch(`${process.env.HOST}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

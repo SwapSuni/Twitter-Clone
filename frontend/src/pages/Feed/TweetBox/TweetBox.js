@@ -44,7 +44,7 @@ const TweetBox = () => {
         e.preventDefault();
 
         if(user.providerData[0].providerId==='password'){
-          fetch(`http://localhost:5000/loggedInUser?email=${email}`)
+          fetch(`${process.env.HOST}/loggedInUser?email=${email}`)
           .then(res=> res.json())
           .then(data=> {
             // console.log(data[0]);

@@ -16,7 +16,7 @@ const More = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(`http://localhost:5000/Isverified?email=${user.email}`);
+      const res = await axios.get(`${process.env.HOST}/Isverified?email=${user.email}`);
       // console.log(res.data.verified);
       setIsverify(res.data.verified);
     })();
@@ -24,15 +24,15 @@ const More = () => {
   }, [isverify]);
 
   const verification = async () => {
-    const res = await axios.get(`http://localhost:5000/userPost?email=${user?.email}`);
+    const res = await axios.get(`${process.env.HOST}/userPost?email=${user?.email}`);
     const len = (res.data.length);
     if (len <= 3) {
       toast.error("You are not eligible for verification")
     }
     else {
-      const { data: { key } } = await axios.get("http://www.localhost:5000/getkey")
+      const { data: { key } } = await axios.get(`${process.env.HOST}/getkey`)
 
-      const { data: { order } } = await axios.post("http://localhost:5000/checkout", {
+      const { data: { order } } = await axios.post(`${process.env.HOST}/checkout`, {
         amount: 500,
       })
 
@@ -49,7 +49,7 @@ const More = () => {
             ...response,
           }
 
-          const validate = await fetch("http://localhost:5000/paymentVerify", {
+          const validate = await fetch(`${process.env.HOST}/paymentVerify`, {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
@@ -68,7 +68,7 @@ const More = () => {
               verified: true,
               expiresAt: formattedDate.toString(),
             }
-            fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+            fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
               method: "PATCH",
               headers: {
                 'content-type': 'application/json'

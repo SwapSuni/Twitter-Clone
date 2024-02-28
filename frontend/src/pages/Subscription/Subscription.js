@@ -16,8 +16,8 @@ const Subscription = () => {
     const navigate = useNavigate();
 
     const subscribe = async (amount) => {
-        const { data: { key } } = await axios.get("http://www.localhost:5000/getkey");
-        const { data: { order } } = await axios.post("http://localhost:5000/checkout", {
+        const { data: { key } } = await axios.get(`${process.env.HOST}/getkey`);
+        const { data: { order } } = await axios.post(`${process.env.HOST}/checkout`, {
             amount: amount,
         })
 
@@ -34,7 +34,7 @@ const Subscription = () => {
                     ...response,
                 }
 
-                const validate = await fetch("http://localhost:5000/paymentVerify", {
+                const validate = await fetch(`${process.env.HOST}/paymentVerify`, {
                     method: "POST",
                     body: JSON.stringify(body),
                     headers: {
@@ -60,7 +60,7 @@ const Subscription = () => {
                         subscription: subs,
                         subsExpAt: formattedDate.toString(),
                     }
-                    fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+                    fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
                         method: "PATCH",
                         headers: {
                             'content-type': 'application/json'
