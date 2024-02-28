@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.box{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.box:first-child{
+    margin-top: 15px;
+}
+
+.box p{
+    margin: 20px;
+}
+
+.head p{
+    margin: 30px;
+}
+
+.cards{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+}
+
+.card{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.card h2{
+    margin-top: 0;
+}
+
+.card p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card button{
+    margin: 20px 20px;
+    padding: 7px 15px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+}
