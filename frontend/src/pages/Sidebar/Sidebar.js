@@ -40,7 +40,7 @@ const Sidebar = ({ handleLogout, user }) => {
       }
       const jsondata = JSON.stringify(data);
       // console.log(jsondata);
-      fetch(`${process.env.HOST}/register`, {
+      fetch(`https://twitter-clone-2-0kqn.onrender.com/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

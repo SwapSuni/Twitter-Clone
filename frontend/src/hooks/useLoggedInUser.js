@@ -13,7 +13,7 @@ const useLoggedInUser = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
 
   useEffect(() => {
-    fetch(`${process.env.HOST}/loggedInUser?email=${email}`)
+    fetch(`https://twitter-clone-2-0kqn.onrender.com/loggedInUser?email=${email}`)
       .then(res => res.json())
       .then(data => {
         setLoggedInUser(data)

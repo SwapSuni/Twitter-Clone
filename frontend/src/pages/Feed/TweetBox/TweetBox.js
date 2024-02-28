@@ -44,7 +44,7 @@ const TweetBox = () => {
         e.preventDefault();
 
         if(user.providerData[0].providerId==='password'){
-          fetch(`${process.env.HOST}/loggedInUser?email=${email}`)
+          fetch(`https://twitter-clone-2-0kqn.onrender.com/loggedInUser?email=${email}`)
           .then(res=> res.json())
           .then(data=> {
             // console.log(data[0]);
@@ -58,7 +58,7 @@ const TweetBox = () => {
         }
 
         //api calls here
-        const eligible= await axios.get(`http://localhost:5000/IsEligible?email=${email}`);
+        const eligible= await axios.get(`https://twitter-clone-2-0kqn.onrender.com/IsEligible?email=${email}`);
         // console.log(eligible);
         if(eligible.data.status === "updated"){
           if(name){
@@ -74,7 +74,7 @@ const TweetBox = () => {
             setPost('');
             setImageURL('');
   
-            fetch(`http://localhost:5000/post`,{
+            fetch(`https://twitter-clone-2-0kqn.onrender.com/post`,{
               method:"POST",
               headers:{
                 'content-type':'application/json'

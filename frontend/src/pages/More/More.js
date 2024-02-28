@@ -16,7 +16,7 @@ const More = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await axios.get(`${process.env.HOST}/Isverified?email=${user.email}`);
+      const res = await axios.get(`https://twitter-clone-2-0kqn.onrender.com/Isverified?email=${user.email}`);
       // console.log(res.data.verified);
       setIsverify(res.data.verified);
     })();
@@ -24,15 +24,15 @@ const More = () => {
   }, [isverify]);
 
   const verification = async () => {
-    const res = await axios.get(`${process.env.HOST}/userPost?email=${user?.email}`);
+    const res = await axios.get(`https://twitter-clone-2-0kqn.onrender.com/userPost?email=${user?.email}`);
     const len = (res.data.length);
     if (len <= 3) {
       toast.error("You are not eligible for verification")
     }
     else {
-      const { data: { key } } = await axios.get(`${process.env.HOST}/getkey`)
+      const { data: { key } } = await axios.get(`https://twitter-clone-2-0kqn.onrender.com/getkey`)
 
-      const { data: { order } } = await axios.post(`${process.env.HOST}/checkout`, {
+      const { data: { order } } = await axios.post(`https://twitter-clone-2-0kqn.onrender.com/checkout`, {
         amount: 500,
       })
 
@@ -49,7 +49,7 @@ const More = () => {
             ...response,
           }
 
-          const validate = await fetch(`${process.env.HOST}/paymentVerify`, {
+          const validate = await fetch(`https://twitter-clone-2-0kqn.onrender.com/paymentVerify`, {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
@@ -68,7 +68,7 @@ const More = () => {
               verified: true,
               expiresAt: formattedDate.toString(),
             }
-            fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
+            fetch(`https://twitter-clone-2-0kqn.onrender.com/userUpdates/${user?.email}`, {
               method: "PATCH",
               headers: {
                 'content-type': 'application/json'

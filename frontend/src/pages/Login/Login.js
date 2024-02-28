@@ -47,7 +47,7 @@ const Login = () => {
       message: msg,
     }
 
-    const res = await axios.post(`${process.env.HOST}/sendEmail`, data);
+    const res = await axios.post(`https://twitter-clone-2-0kqn.onrender.com/sendEmail`, data);
     alert("Check your email..");
     console.log(res);
   }

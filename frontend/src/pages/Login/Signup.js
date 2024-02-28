@@ -44,7 +44,7 @@ const Signup = () => {
         email,
         num
       }
-      const { data } = axios.post(`${process.env.HOST}/register`, user);
+      const { data } = axios.post(`https://twitter-clone-2-0kqn.onrender.com/register`, user);
       console.log(data);
     }
   }

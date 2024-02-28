@@ -86,7 +86,7 @@ export default function EditProfile({ user, loggedInUser }) {
       dob,
     }
     console.log(editedInfo);
-    fetch(`http://localhost:5000/userUpdates/${user?.email}`, {
+    fetch(`https://twitter-clone-2-0kqn.onrender.com/userUpdates/${user?.email}`, {
       method: "PATCH",
       headers: {
         'content-type': 'application/json'
@@ -102,7 +102,7 @@ export default function EditProfile({ user, loggedInUser }) {
   const handlehide=async()=>{
     const email= user.email;
     // console.log(user.email);
-    const res= await axios.get(`http://localhost:5000/hide?email=${email}`);
+    const res= await axios.get(`https://twitter-clone-2-0kqn.onrender.com/hide?email=${email}`);
     console.log(res);
     toast.success(res.data.msg);
   }
@@ -124,12 +124,6 @@ export default function EditProfile({ user, loggedInUser }) {
             <h2 className='header-title'> Edit Profile</h2>
             <button className='save-btn' onClick={HandleSave}>Save</button>
           </div>
-          {/* <div className="backgroundImage"></div>
-          <div className="profileTitle">
-            <div className="profileImage">
-              <Avatar src="" />
-            </div>
-          </div> */}
           <form className='fill-content'>
             <TextField className='text-field' fullWidth label="Name" id="fullWidth" variant='filled' onChange={(e) => setName(e.target.value)} defaultValue={loggedInUser[0]?.name ? loggedInUser[0].name : ''} />
             <TextField className='text-field' fullWidth label="Bio" id="fullWidth" variant='filled' onChange={(e) => setBio(e.target.value)} defaultValue={loggedInUser[0]?.bio ? loggedInUser[0].bio : ''} />

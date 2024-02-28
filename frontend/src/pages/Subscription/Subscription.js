@@ -16,8 +16,8 @@ const Subscription = () => {
     const navigate = useNavigate();
 
     const subscribe = async (amount) => {
-        const { data: { key } } = await axios.get(`${process.env.HOST}/getkey`);
-        const { data: { order } } = await axios.post(`${process.env.HOST}/checkout`, {
+        const { data: { key } } = await axios.get(`https://twitter-clone-2-0kqn.onrender.com/getkey`);
+        const { data: { order } } = await axios.post(`https://twitter-clone-2-0kqn.onrender.com/checkout`, {
             amount: amount,
         })
 
@@ -34,7 +34,7 @@ const Subscription = () => {
                     ...response,
                 }
 
-                const validate = await fetch(`${process.env.HOST}/paymentVerify`, {
+                const validate = await fetch(`https://twitter-clone-2-0kqn.onrender.com/paymentVerify`, {
                     method: "POST",
                     body: JSON.stringify(body),
                     headers: {
@@ -60,7 +60,7 @@ const Subscription = () => {
                         subscription: subs,
                         subsExpAt: formattedDate.toString(),
                     }
-                    fetch(`${process.env.HOST}/userUpdates/${user?.email}`, {
+                    fetch(`https://twitter-clone-2-0kqn.onrender.com/userUpdates/${user?.email}`, {
                         method: "PATCH",
                         headers: {
                             'content-type': 'application/json'

@@ -8,7 +8,7 @@ const Feed = () => {
   const [posts, setPosts]= useState([]);
 
   useEffect(()=>{
-    fetch(`${process.env.HOST}/post`)
+    fetch(`https://twitter-clone-2-0kqn.onrender.com/post`)
     .then(res=> res.json())
     .then(data=>{
       setPosts(data);
